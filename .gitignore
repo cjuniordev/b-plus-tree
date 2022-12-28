@@ -1,4 +1,4 @@
 *.o
 .vscode/*
 *.exe
-./bin/*
+bin/*
