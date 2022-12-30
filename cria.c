@@ -1,6 +1,6 @@
 #include "headers.h"
 
-Paciente *criaPaciente(int id, int anoNascimento)
+Paciente *criaPaciente(int id, int anoNascimento, char nome[], char endereco[], char nomeMae[], char nomePai[], char cpf[])
 {
     Paciente *p = (Paciente*)malloc(sizeof(Paciente));
 
@@ -11,6 +11,11 @@ Paciente *criaPaciente(int id, int anoNascimento)
 
     p->id = id;
     p->anoNascimento = anoNascimento;
+    stpcpy(p->nome, nome);
+    stpcpy(p->endereco, endereco);
+    stpcpy(p->nomeMae, nomeMae);
+    stpcpy(p->nomePai, nomePai);
+    stpcpy(p->cpf, cpf);
 
     return p;
 }

@@ -1,23 +1,98 @@
 #include "headers.h"
 
-void imprimeArvore(No *arv, int nivel)
+void enfileira(No **fila, No *no) 
 {
-    if (arv == NULL)
+    if ((*fila) == NULL) {
+        *fila = no;
+        (*fila)->prox = NULL;
         return;
-
-    int i = 0;
-  
-    for (i = arv->quantChaves-1; i >= 0 ; i--) {
-
-        printf("Chave: %d | Nivel: %d | i: %d\n", arv->chaves[i], nivel, i);
-        // printf("%d | %d\n", arv->chaves[i + 1], nivel);
-
-        for (int j = 0; j < nivel; j++) {
-            printf("    \n");
-        }
-
-        // printf("%d\n", arv->chaves[i]); 
     }
 
-    imprimeArvore(arv->ponts[i+1], nivel + 1);
+    No *aux = (*fila);
+
+    while(aux->prox != NULL) {
+        aux = aux->prox;
+    }
+
+    aux->prox = no;
+    no->prox = NULL;
+}
+
+No *desenfileira(No **fila)
+{
+    No *aux = (*fila);
+    (*fila) = (*fila)->prox;
+    
+    return aux;
+}
+
+int posicaoParaFolha(No *arv, No *filho)
+{
+    int i = 0;
+    No *aux = filho;
+    while (aux != arv) {
+        aux = aux->pai;
+        i++;
+    }
+
+    return i;
+}
+
+void imprimeArvore(No *arv) {
+    No *aux = NULL;
+    int i = 0;
+    int nivel = 0;
+    int proxNivel = 0;
+    char extra = '*';
+
+    if (arv == NULL) {
+        printf("Arvore vazia.\n");
+        return;
+    }
+
+    No *fila = NULL;
+    enfileira(&fila, arv);
+    
+    while (fila != NULL) {
+        aux = desenfileira(&fila);
+
+        if (aux->pai != NULL && aux == aux->pai->ponts[0]) {
+            proxNivel = posicaoParaFolha(arv, aux);
+
+            if (proxNivel != nivel) {
+                nivel = proxNivel;
+                printf("\n");
+            }
+        }
+
+        if(aux->folha == TRUE)
+            extra = '*';
+        else
+            extra = ' ';
+        
+
+        for (i = 0; i < aux->quantChaves; i++) {
+            printf("%d%c ", aux->chaves[i], extra);
+        }
+
+        if (aux->folha == FALSE) {
+            for (i = 0; i <= aux->quantChaves; i++)
+                enfileira(&fila, aux->ponts[i]);
+        }
+        
+        printf("| ");
+    }
+
+    printf("\n");
+}
+
+void imprimePaciente(Paciente *p)
+{
+    printf("ID: %d\n", p->id);
+    printf("Ano de Nascimento: %d\n", p->anoNascimento);
+    puts(p->nome);
+    puts(p->endereco);
+    puts(p->nomeMae);
+    puts(p->nomePai);
+    puts(p->cpf);
 }

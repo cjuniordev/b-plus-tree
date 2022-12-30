@@ -13,6 +13,11 @@
 typedef struct paciente {
     int id;
     int anoNascimento;
+    char nome[200];
+    char endereco[500];
+    char nomeMae[200];
+    char nomePai[200];
+    char cpf[20];
 } Paciente;
 
 typedef struct no {
@@ -31,7 +36,7 @@ No *buscaPaginaFolha(int chave, No *arv);
 Paciente *busca(int chave, No *arv);
 
 /* Funções de criação */
-Paciente *criaPaciente(int id, int anoNascimento);
+Paciente *criaPaciente(int id, int anoNascimento, char nome[], char endereco[], char nomeMae[], char nomePai[], char cpf[]);
 No *criaNo();
 No *iniciaArvore(Paciente *paciente);
 
@@ -43,7 +48,14 @@ No *cisaoInterna(No *arv, No *pagina, No *folhaDireita, int indiceAEsquerda, int
 No *insere(No *arv, Paciente *novo);
 int tetoDaMetade(int numero);
 
-/* Funções de impressão */
-void imprimeArvore(No *arv, int nivel);
+/* Funções de impressão e auxiliares */
+void enfileira(No **fila, No *no);
+No *desenfileira(No **fila);
+int posicaoParaFolha(No *arv, No *filho);
+void imprimeArvore(No *arv);
+void imprimePaciente(Paciente *p);
+
+/* Funções auxiliares */
+No *cadastrar(No *arv);
 
 #endif

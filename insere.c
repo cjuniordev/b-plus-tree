@@ -107,7 +107,7 @@ No *cisaoInterna(No *arv, No *pagina, No *folhaDireita, int indiceAEsquerda, int
     novaPagina->ponts[j] = novosPonts[i];
     novaPagina->pai = pagina->pai;
 
-    /* 
+    /*  UNUSED
         No *novoFilho;
         for (i = 0; i <= novaPagina->quantChaves; i++) {
             novoFilho = novaPagina->ponts[i];
@@ -203,8 +203,6 @@ No *insere(No *arv, Paciente *novo)
     if (paginaFolha->quantChaves < ORDEM) {
         insereFolha(paginaFolha, novo);
         return arv;
-    } else {
-        printf("Página cheia.\n");
     }
 
     return cisaoNaFolha(arv, paginaFolha, novo);
