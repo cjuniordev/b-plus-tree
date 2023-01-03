@@ -19,6 +19,8 @@ No *insereFolha(No *pagina, Paciente *novo)
     pagina->ponts[indice] = novo;
     pagina->quantChaves++;
 
+    insereArquivo(novo);
+
     return pagina;
 }
 
@@ -146,7 +148,6 @@ No *cisaoNaFolha(No *arv, No *folha, Paciente *novo)
         novosPonts[j] = folha->ponts[i];
     }
 
-
     novasChaves[indice] = novo->id;
     novosPonts[indice] = novo;
     folha->quantChaves = 0;
@@ -181,6 +182,8 @@ No *cisaoNaFolha(No *arv, No *folha, Paciente *novo)
 
     free(novasChaves);
     free(novosPonts);
+
+    insereArquivo(novo);
 
     return inserePai(arv, folha, novaPaginaFolha, promovida);
 }

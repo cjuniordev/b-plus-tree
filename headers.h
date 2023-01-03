@@ -54,6 +54,7 @@ No *desenfileira(No **fila);
 int posicaoParaFolha(No *arv, No *filho);
 void imprimeArvore(No *arv);
 void imprimePaciente(Paciente *p);
+void imprimePacienteArquivo(Paciente p);
 
 /* Funções auxiliares */
 No *cadastrar(No *arv);
@@ -62,5 +63,9 @@ No *remover(No *arv);
 void imprimir(No *arv);
 void imprimirIntervalo(No *arv);
 void limpaBuffer();
+
+/* Arquivos */
+void insereArquivo(Paciente *p);
+void leArquivo();
 
 #endif

@@ -63,5 +63,7 @@ No *iniciaArvore(Paciente *paciente)
     arv->ponts[ORDEM - 1] = NULL;
     arv->folha = TRUE;
 
+    insereArquivo(paciente);
+
     return arv;
 }

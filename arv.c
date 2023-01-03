@@ -62,9 +62,12 @@ int main() {
                 printf("Saindo...\n");
                 rodando = FALSE;
                 break;
+            case 6:
+                leArquivo();
+                break;
             default:
                 break;  
         }
 
     }
-}   
+}
