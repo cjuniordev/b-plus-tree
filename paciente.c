@@ -10,26 +10,24 @@ No *cadastrar(No *arv)
 
     printf("Insira o ano de nascimento: ");
     scanf("%d", &nascimento);
+    limpaBuffer();
 
-    fflush(stdin);
     printf("Insira o nome: ");
     fgets(nome, 200, stdin);
 
-    fflush(stdin);
     printf("Insira o endereco: ");
     fgets(endereco, 500, stdin);
 
-    fflush(stdin);
     printf("Insira o nome da mae: ");
     fgets(nomeMae, 200, stdin);
 
-    fflush(stdin);
     printf("Insira o nome do pai: ");
     fgets(nomePai, 200, stdin);
 
-    fflush(stdin);
     printf("Insira o CPF: ");
     fgets(cpf, 20, stdin);
+
+    printf("Nome: %s", nome);
 
     Paciente *p = criaPaciente(id, nascimento, nome, endereco, nomeMae, nomePai, cpf);
     insere(arv, p);
@@ -53,7 +51,7 @@ void buscar(No *arv)
     printf("Insira o ID do paciente: ");
     scanf("%d", &id);
 
-    Paciente *p = busca(arv, id);
+    Paciente *p = busca(id, arv);
 
     imprimePaciente(p);
 }
@@ -102,4 +100,11 @@ void imprimirIntervalo(No *arv)
     scanf("%d", &fim);
 
     // chama funcao de impressao no intervalo
+}
+
+void limpaBuffer()
+{
+    char c;
+
+    while ((c = getchar()) != '\n' && c != EOF);
 }

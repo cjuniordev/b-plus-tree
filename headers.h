@@ -57,5 +57,10 @@ void imprimePaciente(Paciente *p);
 
 /* Funções auxiliares */
 No *cadastrar(No *arv);
+void buscar(No *arv);
+No *remover(No *arv);
+void imprimir(No *arv);
+void imprimirIntervalo(No *arv);
+void limpaBuffer();
 
 #endif
