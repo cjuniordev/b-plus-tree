@@ -3,7 +3,7 @@
 void leArquivo()
 {
     Paciente p;
-    FILE *arq = fopen("arvore.bin", "r");
+    FILE *arq = fopen("bin/arvore.bin", "r");
       
     if (arq == NULL) {
         printf("Erro ao abrir o arquivo.\n");
@@ -18,7 +18,7 @@ void leArquivo()
 
 void insereArquivo(Paciente *p)
 {
-    FILE *arq = fopen("arvore.bin", "ab+");
+    FILE *arq = fopen("bin/arvore.bin", "ab+");
 
     if (arq == NULL) {
         printf("Erro ao abrir o arquivo.\n");

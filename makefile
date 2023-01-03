@@ -1,5 +1,5 @@
-OBJS	= cria.o insere.o arv.o busca.o imprime.o auxiliares.o
-SOURCE	= cria.c insere.c arv.c busca.c imprime.c auxiliares.c
+OBJS	= cria.o insere.o arv.o busca.o imprime.o auxiliares.o arquivo.o
+SOURCE	= cria.c insere.c arv.c busca.c imprime.c auxiliares.c arquivo.c
 HEADER	= headers.h
 OUT		= bin/bplus
 CC	 	= gcc
@@ -25,6 +25,9 @@ imprime.o: imprime.c
 
 auxiliares.o: auxiliares.c
 	gcc $(FLAGS) auxiliares.c 
+
+arquivo.o: arquivo.c
+	gcc $(FLAGS) arquivo.c 
 
 clean:
 	rm -rf $(OBJS) $(OUT)
