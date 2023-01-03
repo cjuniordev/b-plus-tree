@@ -34,6 +34,7 @@ typedef struct no {
 /* Funções de busca */
 No *buscaPaginaFolha(int chave, No *arv);
 Paciente *busca(int chave, No *arv);
+int buscaIntervalo(No *arv, int inicio, int fim, int chaves[], void *ponts[]);
 
 /* Funções de criação */
 Paciente *criaPaciente(int id, int anoNascimento, char nome[], char endereco[], char nomeMae[], char nomePai[], char cpf[]);
@@ -55,17 +56,19 @@ int posicaoParaFolha(No *arv, No *filho);
 void imprimeArvore(No *arv);
 void imprimePaciente(Paciente *p);
 void imprimePacienteArquivo(Paciente p);
+void imprimeNoIntervalo(No *arv, int inicio, int fim);
 
 /* Funções auxiliares */
 No *cadastrar(No *arv);
 void buscar(No *arv);
 No *remover(No *arv);
 void imprimir(No *arv);
-void imprimirIntervalo(No *arv);
+void menuImprimirIntervalo(No *arv);
 void limpaBuffer();
 
 /* Arquivos */
 void insereArquivo(Paciente *p);
 void leArquivo();
+No *reconstroiArv();
 
 #endif

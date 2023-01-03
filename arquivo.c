@@ -28,3 +28,22 @@ void insereArquivo(Paciente *p)
     fwrite(p, sizeof(Paciente), 1, arq);
     fclose(arq);
 }
+
+No *reconstroiArv()
+{
+    Paciente p;
+    FILE *arq = fopen("bin/arvore.bin", "r");
+    No *arv = NULL;
+      
+    if (arq == NULL) {
+        return arv;
+    }
+
+    while (fread(&p, sizeof(Paciente), 1, arq)) {
+        arv = insere(arv, &p);
+    }
+
+    fclose(arq);
+
+    return arv;
+}

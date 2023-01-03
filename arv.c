@@ -7,25 +7,16 @@
  [x] Criar funções de inserção
  [x] Criar funções de impressão
  [ ] Criar funções de remoção
- [ ] Adicionar dados dos funcionários
- [ ] Criar menu
+ [x] Adicionar dados dos funcionários
+ [x] Criar menu
  [ ] Criar funcoes de disco
  [ ] Melhorar funcao de impressão
 */
 
 int main() {
-   No *raiz = NULL;
-  /*   Paciente *paciente = criaPaciente(5, 1990);
-    Paciente *paciente2 = criaPaciente(6, 1991);
-    Paciente *paciente3 = criaPaciente(3, 1992);
-    Paciente *paciente4 = criaPaciente(4, 1993);
+    No *raiz = NULL;
 
-    raiz = insere(raiz, paciente);
-    raiz = insere(raiz, paciente2);
-    raiz = insere(raiz, paciente3);
-    raiz = insere(raiz, paciente4);
- */
-    //imprime(raiz);
+    raiz = reconstroiArv();
 
     int rodando = TRUE, opcao;
 
