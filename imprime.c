@@ -114,3 +114,20 @@ void imprimePacienteArquivo(Paciente p)
     fputs(p.cpf, stdout);
     printf("---------------------\n");
 }
+
+void imprimeNoIntervalo(No *arv, int inicio, int fim)
+{
+    int tam = (fim - inicio) + 1;
+    int chaves[tam];
+    void *ponts[tam];
+    int quantidade = buscaIntervalo(arv, inicio, fim, chaves, ponts);
+    
+    if (quantidade == 0) {
+        printf("Sem resultados para este intervalo!\n");
+        return;
+    }
+
+    for (int i = 0; i < quantidade; i++) {
+        printf("%d -", chaves[i]);
+    }
+}

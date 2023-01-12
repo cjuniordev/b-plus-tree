@@ -41,13 +41,13 @@ int main() {
                 buscar(raiz);
                 break;
             case 2:
-                // remove
+                raiz = remover(raiz);
                 break;
             case 3:
                 imprimir(raiz);
                 break;
             case 4:
-                // pacientes em um intervalo
+                menuImprimirIntervalo(raiz);
                 break;
             case 5:
                 printf("Saindo...\n");

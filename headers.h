@@ -72,5 +72,12 @@ void leArquivo();
 No *reconstroiArv();
 
 /* Funções de deleção */
+No *deletar(No *arv, int chave);
+No *deletaNo(No *arv, No *pagina, int chave, void *pont);
+No *redistribuicao(No *arv, No *n, No *irmao, int indiceIrmao, int indiceDescida, int descida);
+No *concatenar(No *arv, No *pagina, No *irmao, int indiceIrmao, int descida);
+No *preparaRemocao(No *n, int chave, No *pont);
+int buscaIndiceIrmao(No *no);
+No *mudaRaiz(No *arv);
 
 #endif

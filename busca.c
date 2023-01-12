@@ -97,8 +97,6 @@ int buscaIntervalo(No *arv, int inicio, int fim, int chaves[], void *ponts[])
             i++;
         }
 
-        // BUG HERE
-
         /* Vai para a próxima página e zera o iterador */
         no = no->ponts[ORDEM - 1];
 

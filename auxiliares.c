@@ -68,29 +68,29 @@ No *remover(No *arv)
     printf("Insira o ID do paciente: ");
     scanf("%d", &id);
 
-    // chama funcao de remocao
+    arv = deletar(arv, id);
 
     return arv;
 }
 
 void imprimir(No *arv)
 {
-    if (arv == NULL)
+    /* if (arv == NULL)
     {
         printf("Nao existe pacientes cadastrados.\n");
         return;
-    }
+    } */
 
     imprimeArvore(arv);
 }
         
 void menuImprimirIntervalo(No *arv)
 {
-    if (arv == NULL)
+    /* if (arv == NULL)
     {
         printf("Nao existe pacientes cadastrados.\n");
         return;
-    }
+    } */
 
     int inicio, fim;
     printf("Insira o id de inicio: ");
