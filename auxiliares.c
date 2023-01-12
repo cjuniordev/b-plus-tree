@@ -51,7 +51,7 @@ void buscar(No *arv)
     printf("Insira o ID do paciente: ");
     scanf("%d", &id);
 
-    Paciente *p = busca(id, arv);
+    Paciente *p = busca(id, arv, NULL);
 
     imprimePaciente(p);
 }
@@ -84,7 +84,7 @@ void imprimir(No *arv)
     imprimeArvore(arv);
 }
         
-void imprimirIntervalo(No *arv)
+void menuImprimirIntervalo(No *arv)
 {
     if (arv == NULL)
     {
@@ -99,7 +99,7 @@ void imprimirIntervalo(No *arv)
     printf("Insira o id de fim: ");
     scanf("%d", &fim);
 
-    // chama funcao de impressao no intervalo
+    imprimeNoIntervalo(arv, inicio, fim);
 }
 
 void limpaBuffer()

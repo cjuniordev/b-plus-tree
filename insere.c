@@ -190,7 +190,7 @@ No *cisaoNaFolha(No *arv, No *folha, Paciente *novo)
 
 No *insere(No *arv, Paciente *novo)
 {
-    Paciente *p = busca(novo->id, arv);
+    Paciente *p = busca(novo->id, arv, NULL);
 
     if (p != NULL) {
         printf("Paciente já cadastrado.\n");

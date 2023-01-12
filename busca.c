@@ -5,7 +5,7 @@ No *buscaPaginaFolha(int chave, No *arv)
 {
     // TODO: use this logic to implement print function
     if (arv == NULL)
-        return NULL;
+        return arv;
 
     No *aux = arv;
 
@@ -20,17 +20,22 @@ No *buscaPaginaFolha(int chave, No *arv)
         }
 
         // vai para a próxima página
-        aux = aux->ponts[i];
+        aux = (No *)aux->ponts[i];
     }
 
     return aux;
 }
 
 // Busca uma chave na arvore e o retorna, caso exista
-Paciente *busca(int chave, No *arv)
+Paciente *busca(int chave, No *arv, No **paginaFolha)
 {
-    if (arv == NULL)
+    if (arv == NULL) {
+        if (paginaFolha != NULL) {
+            *paginaFolha = NULL;
+        }   
         return NULL;
+    }
+        
 
     // Encontrar a página folha
     No *pagina = NULL;
@@ -40,12 +45,65 @@ Paciente *busca(int chave, No *arv)
     
     //  Percorre toda a página até acabarem as chaves ou 
     //  encontrar uma chave menor ou igual a chave que buscamos
-    while (i < pagina->quantChaves && chave > pagina->chaves[i]) {
-        i++;
+    for (i = 0; i < pagina->quantChaves; i++) {
+        if (pagina->chaves[i] == chave) break;
     }
 
+    if (paginaFolha != NULL) {
+        *paginaFolha = pagina;
+    }   
+
     if (i >= pagina->quantChaves) return NULL;
-    if (pagina->chaves[i] != chave) return NULL;
     
     return (Paciente*)pagina->ponts[i];
+}
+
+int buscaIntervalo(No *arv, int inicio, int fim, int chaves[], void *ponts[])
+{
+    int quantidade = 0;
+
+    No *no = buscaPaginaFolha(inicio, arv);
+
+    imprimeArvore(arv);
+    
+    /* Se não encontra o nó, não existe intervalo */
+    if (no == NULL) return 0;
+
+    int i = 0;
+
+    /* Percorre toda a página até encontrara a posição em que se encontra a chave que buscamos */
+    /* for (i = 0; i < no->quantChaves && no->chaves[i] < inicio; i++) {} */
+
+    while (i < no->quantChaves && no->chaves[i] < inicio) {
+        i++;
+    }
+    
+    /* Se a posição execede o tamanho da pagina, encerra  */
+    if (i == no->quantChaves) return 0;
+
+    while (no != NULL) {
+        /* Percorre todo o resto do página até encontrar o fim e incrementa a quantidade de itens no intervalo */
+        /* for (; i < no->quantChaves && no->chaves[i] <= fim; i++) {
+            printf("mais antes ainda\n");
+            chaves[quantidade] = no->chaves[i];
+            ponts[quantidade] = no->ponts[i];
+            quantidade++;
+        } */
+
+        while(i < no->quantChaves && no->chaves[i] <= fim) {
+            chaves[quantidade] = no->chaves[i];
+            ponts[quantidade] = no->ponts[i];
+            quantidade++;
+            i++;
+        }
+
+        // BUG HERE
+
+        /* Vai para a próxima página e zera o iterador */
+        no = no->ponts[ORDEM - 1];
+
+        i = 0;
+    }
+
+    return quantidade;
 }

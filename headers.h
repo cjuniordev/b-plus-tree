@@ -33,7 +33,7 @@ typedef struct no {
 
 /* Funções de busca */
 No *buscaPaginaFolha(int chave, No *arv);
-Paciente *busca(int chave, No *arv);
+Paciente *busca(int chave, No *arv, No **paginaFolha);
 int buscaIntervalo(No *arv, int inicio, int fim, int chaves[], void *ponts[]);
 
 /* Funções de criação */
@@ -70,5 +70,7 @@ void limpaBuffer();
 void insereArquivo(Paciente *p);
 void leArquivo();
 No *reconstroiArv();
+
+/* Funções de deleção */
 
 #endif
