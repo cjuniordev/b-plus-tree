@@ -30,7 +30,7 @@ No *cadastrar(No *arv)
     printf("Nome: %s", nome);
 
     Paciente *p = criaPaciente(id, nascimento, nome, endereco, nomeMae, nomePai, cpf);
-    insere(arv, p);
+    arv = insere(arv, p);
 
     printf("Paciente cadastrado com sucesso.\n");
 
@@ -75,22 +75,22 @@ No *remover(No *arv)
 
 void imprimir(No *arv)
 {
-    /* if (arv == NULL)
+    if (arv == NULL)
     {
         printf("Nao existe pacientes cadastrados.\n");
         return;
-    } */
+    }
 
     imprimeArvore(arv);
 }
         
 void menuImprimirIntervalo(No *arv)
 {
-    /* if (arv == NULL)
+    if (arv == NULL)
     {
         printf("Nao existe pacientes cadastrados.\n");
         return;
-    } */
+    }
 
     int inicio, fim;
     printf("Insira o id de inicio: ");
