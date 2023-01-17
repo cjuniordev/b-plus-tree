@@ -1,6 +1,6 @@
  #include "headers.h"
 
-No *insereFolha(No *pagina, Paciente *novo)
+No *insereFolha(No *pagina, Paciente *novo, int remontando)
 {
     int indice = 0; // indice que indica onde deverá ocorrer a inserção
 
@@ -19,7 +19,7 @@ No *insereFolha(No *pagina, Paciente *novo)
     pagina->ponts[indice] = novo;
     pagina->quantChaves++;
 
-    insereArquivo(novo);
+    if (!remontando) insereArquivo(novo);
 
     return pagina;
 }
@@ -88,6 +88,7 @@ No *cisaoInterna(No *arv, No *pagina, No *folhaDireita, int indiceAEsquerda, int
 
     int qtChavesAposCisao = tetoDaMetade(ORDEM);
     No *novaPagina = criaNo();
+    pagina->quantChaves = 0;
     int i, j;
 
     /* Copia os dados para a página original */
@@ -109,13 +110,11 @@ No *cisaoInterna(No *arv, No *pagina, No *folhaDireita, int indiceAEsquerda, int
     novaPagina->ponts[j] = novosPonts[i];
     novaPagina->pai = pagina->pai;
 
-    /*  UNUSED
-        No *novoFilho;
-        for (i = 0; i <= novaPagina->quantChaves; i++) {
-            novoFilho = novaPagina->ponts[i];
-            novoFilho->pai = novaPagina;
-        }
-    */
+    No *novoFilho;
+    for (i = 0; i <= novaPagina->quantChaves; i++) {
+        novoFilho = novaPagina->ponts[i];
+        novoFilho->pai = novaPagina;
+    }
 
     free(novosPonts);
     free(novasChaves);
@@ -123,7 +122,7 @@ No *cisaoInterna(No *arv, No *pagina, No *folhaDireita, int indiceAEsquerda, int
     return inserePai(arv, pagina, novaPagina, chavePromovida);
 }
 
-No *cisaoNaFolha(No *arv, No *folha, Paciente *novo)
+No *cisaoNaFolha(No *arv, No *folha, Paciente *novo, int remontando)
 {
     No *novaPaginaFolha = criaNo(); // inicializa nova página folha
     novaPaginaFolha->folha = TRUE;
@@ -183,19 +182,24 @@ No *cisaoNaFolha(No *arv, No *folha, Paciente *novo)
     free(novasChaves);
     free(novosPonts);
 
-    insereArquivo(novo);
+    if (!remontando) insereArquivo(novo);
 
     return inserePai(arv, folha, novaPaginaFolha, promovida);
 }
 
-No *insere(No *arv, Paciente *novo)
+No *insere(No *arv, Paciente *novo, int remontando)
 {
+    if (novo->deletado) return arv;
+
     Paciente *p = busca(novo->id, arv, NULL);
 
     if (p != NULL) {
-        printf("Paciente já cadastrado.\n");
+        if (!remontando) { printf("Paciente já cadastrado.\n"); }
+        printf("alo galera do peao\n");
         return arv;
     }
+
+    printf("opa passoun\n\n");
 
     if (arv == NULL)
         return iniciaArvore(novo);
@@ -203,12 +207,12 @@ No *insere(No *arv, Paciente *novo)
     No *paginaFolha = buscaPaginaFolha(novo->id, arv);
 
     // Verifica se a página não está cheia
-    if (paginaFolha->quantChaves < ORDEM) {
-        insereFolha(paginaFolha, novo);
+    if (paginaFolha->quantChaves < ORDEM - 1) {
+        insereFolha(paginaFolha, novo, remontando);
         return arv;
     }
 
-    return cisaoNaFolha(arv, paginaFolha, novo);
+    return cisaoNaFolha(arv, paginaFolha, novo, remontando);
 }
 
 int tetoDaMetade(int numero)
@@ -216,5 +220,5 @@ int tetoDaMetade(int numero)
     if (numero % 2 == 0)
         return numero / 2;
 
-    return numero / 2 + 1;
+    return (numero / 2) + 1;
 }

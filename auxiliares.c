@@ -27,10 +27,8 @@ No *cadastrar(No *arv)
     printf("Insira o CPF: ");
     fgets(cpf, 20, stdin);
 
-    printf("Nome: %s", nome);
-
     Paciente *p = criaPaciente(id, nascimento, nome, endereco, nomeMae, nomePai, cpf);
-    arv = insere(arv, p);
+    arv = insere(arv, p, FALSE);
 
     printf("Paciente cadastrado com sucesso.\n");
 

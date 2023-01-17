@@ -13,7 +13,8 @@ No *deletar(No *arv, int chave)
         arv = deletaNo(arv, folha, chave, p);
 
         // Libera o paciente
-        free(p);
+        deletaArquivo(p->id);
+        /* free(p); */
     }    
 
     return arv;
@@ -34,9 +35,10 @@ No *deletaNo(No *arv, No *pagina, int chave, void *pont)
 
     // Se a página não fere a regra de quantidade minima de chaves, retorna a arvore
     if (pagina->quantChaves >= qtMinChaves) return arv;
-
+    
     // Busca o indice do irmao
     indiceIrmao = buscaIndiceIrmao(pagina);
+
     // Se o indiceIrmao for negativo, é porque nosso nó é o primeiro filho do pai
     indiceDescida = (indiceIrmao == -1) ? 0 : indiceIrmao;
     descida = pagina->pai->chaves[indiceDescida];

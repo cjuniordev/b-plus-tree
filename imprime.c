@@ -8,6 +8,7 @@ void enfileira(No **fila, No *no)
         return;
     }
 
+
     No *aux = (*fila);
 
     while(aux->prox != NULL) {
@@ -22,7 +23,8 @@ No *desenfileira(No **fila)
 {
     No *aux = (*fila);
     (*fila) = (*fila)->prox;
-    
+    aux->prox = NULL;
+
     return aux;
 }
 
@@ -112,6 +114,7 @@ void imprimePacienteArquivo(Paciente p)
     fputs(p.nomePai, stdout);
     printf("CPF: ");
     fputs(p.cpf, stdout);
+    printf("Deletado? %d\n", p.deletado);
     printf("---------------------\n");
 }
 

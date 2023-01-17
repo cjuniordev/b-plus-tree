@@ -1,17 +1,8 @@
 #include "headers.h"
 
-/* 
- [x] Criar structs
- [x] Criar funções de busca
- [x] Criar funções de criação
- [x] Criar funções de inserção
- [x] Criar funções de impressão
- [ ] Criar funções de remoção
- [x] Adicionar dados dos funcionários
- [x] Criar menu
- [ ] Criar funcoes de disco
- [ ] Melhorar funcao de impressão
-*/
+// BUG: split errado
+// BUG: remover errado
+// BUG: imprimir errado
 
 int main() {
     No *raiz = NULL;

@@ -7,7 +7,7 @@
 
 #define FALSE 0
 #define TRUE 1
-#define ORDEM 2
+#define ORDEM 4
 
 /* Estruturas */
 typedef struct paciente {
@@ -18,6 +18,7 @@ typedef struct paciente {
     char nomeMae[200];
     char nomePai[200];
     char cpf[20];
+    int deletado;
 } Paciente;
 
 typedef struct no {
@@ -42,11 +43,11 @@ No *criaNo();
 No *iniciaArvore(Paciente *paciente);
 
 /* Funções de inserção */
-No *insereFolha(No *pagina, Paciente *novo);
+No *insereFolha(No *pagina, Paciente *novo, int remontando);
 No *inserePai(No *arv, No *folha, No *novaFolha, int chavePromovida);
-No *cisaoNaFolha(No *arv, No *folha, Paciente *novo);
+No *cisaoNaFolha(No *arv, No *folha, Paciente *novo, int remontando);
 No *cisaoInterna(No *arv, No *pagina, No *folhaDireita, int indiceAEsquerda, int chave);
-No *insere(No *arv, Paciente *novo);
+No *insere(No *arv, Paciente *novo, int remontando);
 int tetoDaMetade(int numero);
 
 /* Funções de impressão e auxiliares */
@@ -70,6 +71,7 @@ void limpaBuffer();
 void insereArquivo(Paciente *p);
 void leArquivo();
 No *reconstroiArv();
+void deletaArquivo(int indice);
 
 /* Funções de deleção */
 No *deletar(No *arv, int chave);

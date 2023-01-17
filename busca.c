@@ -31,15 +31,13 @@ Paciente *busca(int chave, No *arv, No **paginaFolha)
 {
     if (arv == NULL) {
         if (paginaFolha != NULL) {
-            *paginaFolha = NULL;
+            (*paginaFolha) = NULL;
         }   
         return NULL;
     }
-        
 
     // Encontrar a página folha
-    No *pagina = NULL;
-    pagina = buscaPaginaFolha(chave, arv);
+    No *pagina = buscaPaginaFolha(chave, arv);
 
     int i = 0;
     
@@ -50,10 +48,10 @@ Paciente *busca(int chave, No *arv, No **paginaFolha)
     }
 
     if (paginaFolha != NULL) {
-        *paginaFolha = pagina;
+        (*paginaFolha) = pagina;
     }   
 
-    if (i >= pagina->quantChaves) return NULL;
+    if (i == pagina->quantChaves) return NULL;
     
     return (Paciente*)pagina->ponts[i];
 }

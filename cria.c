@@ -16,6 +16,7 @@ Paciente *criaPaciente(int id, int anoNascimento, char nome[], char endereco[], 
     stpcpy(p->nomeMae, nomeMae);
     stpcpy(p->nomePai, nomePai);
     stpcpy(p->cpf, cpf);
+    p->deletado = FALSE;
 
     return p;
 }
