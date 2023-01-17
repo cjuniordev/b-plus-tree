@@ -1,21 +1,6 @@
 #include "headers.h"
 
-void leArquivo()
-{
-    Paciente p;
-    FILE *arq = fopen("bin/arvore.bin", "rb+");
-      
-    if (arq == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
-        exit(0);
-    }
-
-    while (fread(&p, sizeof(Paciente), 1, arq))
-        imprimePacienteArquivo(p);
-
-    fclose(arq);
-}
-
+/* Função que "deleta" paciente em disco */
 void deletaArquivo(int id)
 {
     FILE *arq = fopen("bin/arvore.bin", "rb+");
@@ -43,6 +28,7 @@ void deletaArquivo(int id)
     fclose(arq);
 }
 
+/* Função que insere paciente em disco */
 void insereArquivo(Paciente *p)
 {
     FILE *arq = fopen("bin/arvore.bin", "ab+");
@@ -56,6 +42,7 @@ void insereArquivo(Paciente *p)
     fclose(arq);
 }
 
+/* Função que reconstroi a árvore a partir do arquivo */
 No *reconstroiArv()
 {
     Paciente p;

@@ -1,9 +1,5 @@
 #include "headers.h"
 
-// BUG: split errado
-// BUG: remover errado
-// BUG: imprimir errado
-
 int main() {
     No *raiz = NULL;
 
@@ -43,9 +39,6 @@ int main() {
             case 5:
                 printf("Saindo...\n");
                 rodando = FALSE;
-                break;
-            case 6:
-                leArquivo();
                 break;
             default:
                 break;  

@@ -194,12 +194,9 @@ No *insere(No *arv, Paciente *novo, int remontando)
     Paciente *p = busca(novo->id, arv, NULL);
 
     if (p != NULL) {
-        if (!remontando) { printf("Paciente já cadastrado.\n"); }
-        printf("alo galera do peao\n");
+        if (!remontando) printf("Paciente já cadastrado.\n");
         return arv;
     }
-
-    printf("opa passoun\n\n");
 
     if (arv == NULL)
         return iniciaArvore(novo);

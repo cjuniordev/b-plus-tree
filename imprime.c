@@ -99,25 +99,6 @@ void imprimePaciente(Paciente *p)
     puts(p->cpf);
 }
 
-void imprimePacienteArquivo(Paciente p)
-{
-    printf("---------------------\n");
-    printf("ID: %d\n", p.id);
-    printf("Ano de Nascimento: %d\n", p.anoNascimento);
-    printf("Nome: ");
-    fputs(p.nome, stdout);
-    printf("Endereço: ");
-    fputs(p.endereco, stdout);
-    printf("Nome da mãe: ");
-    fputs(p.nomeMae, stdout);
-    printf("Nome do pai: ");
-    fputs(p.nomePai, stdout);
-    printf("CPF: ");
-    fputs(p.cpf, stdout);
-    printf("Deletado? %d\n", p.deletado);
-    printf("---------------------\n");
-}
-
 void imprimeNoIntervalo(No *arv, int inicio, int fim)
 {
     int tam = (fim - inicio) + 1;
