@@ -3,7 +3,6 @@
 // Busca e retorna uma página folha que pode conter a chave
 No *buscaPaginaFolha(int chave, No *arv)
 {
-    // TODO: use this logic to implement print function
     if (arv == NULL)
         return arv;
 
