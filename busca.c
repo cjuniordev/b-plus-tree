@@ -69,8 +69,6 @@ int buscaIntervalo(No *arv, int inicio, int fim, int chaves[], void *ponts[])
     int i = 0;
 
     /* Percorre toda a página até encontrara a posição em que se encontra a chave que buscamos */
-    /* for (i = 0; i < no->quantChaves && no->chaves[i] < inicio; i++) {} */
-
     while (i < no->quantChaves && no->chaves[i] < inicio) {
         i++;
     }
@@ -79,14 +77,7 @@ int buscaIntervalo(No *arv, int inicio, int fim, int chaves[], void *ponts[])
     if (i == no->quantChaves) return 0;
 
     while (no != NULL) {
-        /* Percorre todo o resto do página até encontrar o fim e incrementa a quantidade de itens no intervalo */
-        /* for (; i < no->quantChaves && no->chaves[i] <= fim; i++) {
-            printf("mais antes ainda\n");
-            chaves[quantidade] = no->chaves[i];
-            ponts[quantidade] = no->ponts[i];
-            quantidade++;
-        } */
-
+        /* Percorre todo o resto do página até encontrar o fim e incrementa a quantidade de itens no intervalo */      
         while(i < no->quantChaves && no->chaves[i] <= fim) {
             chaves[quantidade] = no->chaves[i];
             ponts[quantidade] = no->ponts[i];

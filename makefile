@@ -6,31 +6,31 @@ CC	 	= gcc
 FLAGS	= -c -Wall -Werror -Wextra
 
 all: $(OBJS)
-	gcc -o $(OUT) $(OBJS)
+	$(CC) -o $(OUT) $(OBJS)
 
-cria.o: cria.c headers.h
-	gcc $(FLAGS) cria.c 
+cria.o: cria.c $(HEADER)
+	$(CC) $(FLAGS) cria.c 
 
-insere.o: insere.c
-	gcc $(FLAGS) insere.c 
+insere.o: insere.c $(HEADER)
+	$(CC) $(FLAGS) insere.c 
 
-main.o: main.c
-	gcc $(FLAGS) main.c 
+main.o: main.c $(HEADER)
+	$(CC) $(FLAGS) main.c 
 
-busca.o: busca.c
-	gcc $(FLAGS) busca.c 
+busca.o: busca.c $(HEADER)
+	$(CC) $(FLAGS) busca.c 
 
-imprime.o: imprime.c
-	gcc $(FLAGS) imprime.c 
+imprime.o: imprime.c $(HEADER)
+	$(CC) $(FLAGS) imprime.c 
 
-auxiliares.o: auxiliares.c
-	gcc $(FLAGS) auxiliares.c 
+auxiliares.o: auxiliares.c $(HEADER)
+	$(CC) $(FLAGS) auxiliares.c 
 
-arquivo.o: arquivo.c
-	gcc $(FLAGS) arquivo.c 
+arquivo.o: arquivo.c $(HEADER)
+	$(CC) $(FLAGS) arquivo.c 
 
-deleta.o: deleta.c
-	gcc $(FLAGS) deleta.c 
+deleta.o: deleta.c $(HEADER)
+	$(CC) $(FLAGS) deleta.c 
 
 clean:
 	rm -rf $(OBJS) $(OUT)
