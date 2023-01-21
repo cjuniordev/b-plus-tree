@@ -11,10 +11,8 @@ No *deletar(No *arv, int chave)
     if (p != NULL && folha != NULL) {
         // Remove ele da arvore
         arv = deletaNo(arv, folha, chave, p);
-
-        // Libera o paciente
+  
         deletaArquivo(p->id);
-        /* free(p); */
     }    
 
     return arv;
