@@ -51,7 +51,10 @@ void buscar(No *arv)
 
     Paciente *p = busca(id, arv, NULL);
 
-    imprimePaciente(p);
+    if (p != NULL)
+        imprimePaciente(p);
+    else
+        printf("Paciente nao encontrado.\n");
 }
 
 No *remover(No *arv)
