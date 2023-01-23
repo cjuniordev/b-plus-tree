@@ -60,8 +60,6 @@ int buscaIntervalo(No *arv, int inicio, int fim, int chaves[], void *ponts[])
     int quantidade = 0;
 
     No *no = buscaPaginaFolha(inicio, arv);
-
-    imprimeArvore(arv);
     
     /* Se não encontra o nó, não existe intervalo */
     if (no == NULL) return 0;
