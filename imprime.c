@@ -92,11 +92,11 @@ void imprimePaciente(Paciente *p)
 {
     printf("ID: %d\n", p->id);
     printf("Ano de Nascimento: %d\n", p->anoNascimento);
-    puts(p->nome);
-    puts(p->endereco);
-    puts(p->nomeMae);
-    puts(p->nomePai);
-    puts(p->cpf);
+    printf("Nome: %s\n", p->nome);
+    printf("Endereco: %s\n", p->endereco);
+    printf("Nome da Mae: %s\n", p->nomeMae);
+    printf("Nome do Pai: %s\n", p->nomePai);
+    printf("CPF: %s\n", p->cpf);
 }
 
 void imprimeNoIntervalo(No *arv, int inicio, int fim)
